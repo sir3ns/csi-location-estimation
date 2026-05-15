@@ -39,7 +39,7 @@ def load_csi(file_path):
     return np.array(timestamps), np.array(samples)
 
 
-ts, raw = load_csi("./rawData/1/h.csv")
+ts, raw = load_csi("./rawData/8/z.csv")
 
 # -------- MEAN AMPLITUDE --------
 
