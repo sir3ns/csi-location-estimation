@@ -1,0 +1,17 @@
+              precision    recall  f1-score   support
+
+       Empty       0.85      0.92      0.88       103
+     Block 1       0.40      0.59      0.48       103
+     Block 2       0.41      0.31      0.35       104
+     Block 3       0.33      0.43      0.37       104
+     Block 4       0.36      0.57      0.44       104
+     Block 5       0.59      0.31      0.41       103
+     Block 6       0.36      0.41      0.39       104
+     Block 7       0.51      0.41      0.45       103
+     Block 8       0.52      0.33      0.40       103
+     Block 9       0.51      0.37      0.43       104
+
+    accuracy                           0.46      1035
+   macro avg       0.49      0.46      0.46      1035
+weighted avg       0.49      0.46      0.46      1035
+
