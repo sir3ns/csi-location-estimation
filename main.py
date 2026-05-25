@@ -1,5 +1,13 @@
-import numpy as np
 import os
+import joblib
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from tensorflow.keras import layers, Model
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, confusion_matrix
+
 
 # Create folders if they don't exist
 os.makedirs("model", exist_ok=True)
@@ -28,10 +36,6 @@ print(X.shape, y.shape)
 
 # ── 2. Normalize and split ────────────────────────────────────────────────────
 
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-import joblib
-
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
@@ -52,9 +56,6 @@ print(X_train.shape)
 
 
 # ── 3. Build model ────────────────────────────────────────────────────────────
-
-import tensorflow as tf
-from tensorflow.keras import layers, Model
 
 def build_model(num_classes=10):
     inputs = tf.keras.Input(shape=(128, 1))
@@ -118,9 +119,6 @@ print("Model saved to model/final_model.keras")
 
 
 # ── 5. Evaluate ───────────────────────────────────────────────────────────────
-
-from sklearn.metrics import classification_report, confusion_matrix
-import matplotlib.pyplot as plt
 
 test_loss, test_acc = model.evaluate(X_test, y_test, verbose=0)
 print(f"Test accuracy: {test_acc:.4f}")

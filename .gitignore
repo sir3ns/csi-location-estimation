@@ -1,1 +1,3 @@
 .venv
+pyrightconfig.json
+python_utils/find_feature.py
