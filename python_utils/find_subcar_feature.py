@@ -1,4 +1,3 @@
-import os
 import matplotlib.pyplot as plt
 
 folder_path = './data.csv'
@@ -17,15 +16,18 @@ def save_plot(sub_car_amp):
         all_amp.append(amp)
         # break
 
-    plt.figure(figsize=(20, 9))
-    plt.plot(range(6900), all_amp)
+    with open(str(sub_car_amp)+'.txt.txt', 'w') as f:
+        f.write(str(all_amp))
 
-    plt.title(f'Amplitude {sub_car_amp}')
-    plt.xlabel('Sample')
-    plt.ylabel('Value')
+    # plt.figure(figsize=(20, 9))
+    # plt.plot(range(6900), all_amp)
 
-    plt.savefig(f'{sub_car_amp}.png')
-    plt.close()
+    # plt.title(f'Amplitude {sub_car_amp}')
+    # plt.xlabel('Sample')
+    # plt.ylabel('Value')
+
+    # plt.savefig(f'{sub_car_amp}.png')
+    # plt.close()
 
 
 for i in range(1, 129):

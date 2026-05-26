@@ -1,0 +1,20 @@
+Test accuracy: 0.8143
+
+              precision    recall  f1-score   support
+
+       Empty       1.00      1.00      1.00        21
+     Block 1       1.00      1.00      1.00        21
+     Block 2       1.00      1.00      1.00        21
+     Block 3       1.00      0.48      0.65        21
+     Block 4       0.66      1.00      0.79        21
+     Block 5       1.00      1.00      1.00        21
+     Block 6       0.62      0.76      0.68        21
+     Block 7       0.69      0.52      0.59        21
+     Block 8       1.00      0.38      0.55        21
+     Block 9       0.62      1.00      0.76        21
+
+    accuracy                           0.81       210
+   macro avg       0.86      0.81      0.80       210
+weighted avg       0.86      0.81      0.80       210
+
+Mean coord error (occupied): 0.3011 (≈ 0.903 block-widths)
