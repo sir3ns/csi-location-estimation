@@ -1,0 +1,47 @@
+Three ways to use it:
+
+Mode 1 — Single window (30 rows exactly)
+python predict_csi.py --mode single --file my_30_frames.csv
+Output shows the room grid with the predicted block highlighted, confidence, and per-class probability bars:
+  Room grid:
+  ┌─────────┬─────────┬─────────┐
+  │  Block 1│  Block 2│  Block 3│
+  ├─────────┼─────────┼─────────┤
+  │  Block 4│ ▓▓▓B5▓▓▓│  Block 6│
+  ├─────────┼─────────┼─────────┤
+  │  Block 7│  Block 8│  Block 9│
+  └─────────┴─────────┴─────────┘
+
+
+Mode 2 — Full file with accuracy report
+bash# With ground-truth labels (first column = label)
+python predict_csi.py --mode file --file data.csv
+
+# Without labels (pure IQ data, 256 values per row)
+python predict_csi.py --mode file --file data.csv --no-labels
+
+# Quiet mode — summary only, no per-window lines
+python predict_csi.py --mode file --file data.csv --quiet
+
+# Custom stride (default 1 = every possible window)
+python predict_csi.py --mode file --file data.csv --stride 5
+
+
+Mode 3 — Live buffer (import into your own code)
+For real-time use where you feed packets as they arrive:
+
+```
+pythonfrom predict_csi import LivePredictor
+
+predictor = LivePredictor(stride=5)   # predict every 5 new frames
+
+for packet in your_csi_stream:
+    result = predictor.push(packet)   # None until 30 frames buffered
+    if result:
+        print(result['class_name'], f"{result['confidence']:.1%}")
+        print("Grid pos:", result['coord_grid'])  # e.g. [1.0, 0.5]
+
+# Call predictor.reset() between measurement sessions
+```
+
+The preprocessing chain in predict_csi.py is byte-for-byte identical to training: amplitude extraction → empty-ref subtraction → 2-channel stack → same scaler transform → same input shape (1, 30, 128, 2).

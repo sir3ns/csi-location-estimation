@@ -1,0 +1,1 @@
+## amplitude of every 128 subcarrier for 6900 frame
